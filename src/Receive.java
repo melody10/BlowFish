@@ -1,38 +1,17 @@
 
-public abstract class Receive implements Runner{
+public class Receive implements Runner{
 	
-	public String getMessage()
-	{
-		return ""; 
-	}
-	public String getKey()
-	{
-		return "";
-	}
-	public void setM(String message)
-	{
-		
-	}
-	public void setK(String key)
-	{
-		
-	}
 	
-	public void encryption()
+	public String decryption(String message)
 	{
-		String message = "";
-		String c = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		int w = 0;
-		for(int i = 0; i < 13; i++)
+		for(int i = 0; i < message.length(); i++)
 		{
-			w = (int) Math.random()*c.length();
-			message = message + c.charAt(w);
+			if(message.substring(i,i+1) == Transmit.encryption(message).substring(i,i+1))
+			{
+				message = Transmit.encryption(message);
+			}
 		}
-		
-	}
-	public void decryption()
-	{
-		
+		return message;
 	}
 	
 }
